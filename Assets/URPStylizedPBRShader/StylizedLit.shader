@@ -1,6 +1,6 @@
 ﻿//Madumpa URP Stylized Lit Shader Ver 1.0
 //E-mail : mnpshino@gmail.com
-//GitHub : 
+//GitHub : https://github.com/madumpa/URP_StylizedLitShader
 //WebSite : https://madumpa.com/
 //Twitter : @madumpa
 
