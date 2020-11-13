@@ -95,11 +95,11 @@ Material:
     - _ShadowBrushStrength: 0
     - _ShadowSmooth: 0.14
     - _ShadowThreshold: 0.567
-    - _Smoothness: 0.787
+    - _Smoothness: 0.852
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 1
-    - _SpecularSmooth: 0.1
+    - _SpecularSmooth: 0.5
     - _SpecularThreshold: 0.5
     - _SrcBlend: 1
     - _Surface: 0
