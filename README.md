@@ -34,9 +34,11 @@ Stylized Diffuse 에서는 3가지의 컬러와 Threshold, Smooth를 이용하�
 
 Stylized Reflection에서는 Specular와 Fresnel을 추가로 제어할 수 있고, Metal의 큐브맵 밝기와 NonMetal의 큐브맵 밝기를 따로 제어할 수 있습니다 
 
+
+
 ![image](https://user-images.githubusercontent.com/35050187/100262679-d5479880-2f8f-11eb-8a71-8efc0b407eaa.png)
 
-브러시 텍스처
+Stylized Lit 셰이더의 가장 큰 특징중에 또 한가지는 브러시 텍스처를 사용할 수 있다는 것입니다
 
 ![image](https://user-images.githubusercontent.com/35050187/100262018-ef34ab80-2f8e-11eb-8654-9a2ac7743afd.png)
 
