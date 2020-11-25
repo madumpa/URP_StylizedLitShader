@@ -1,7 +1,7 @@
 # URP_StylizedLitShader
 URP Stylized Lit Shader Repository
 
-안녕하세요 마둠파입니다. 
+안녕하세요 프리랜서 테크니컬 아티스트 마둠파입니다. 
 
 ![image](https://user-images.githubusercontent.com/35050187/100261095-9adcfc00-2f8d-11eb-8d21-866438c88b71.png)
 
@@ -52,7 +52,11 @@ B채널은 Reflect 에 대응합니다
 
 브러시텍스처 적용 사례에 대해서 간단하게 정리해보았습니다 
 
-이 셰이더의 사용은 자유롭고, 상용프로젝트에서 사용하신다면 메일이라도 하나 남겨주세요
+
+이 셰이더의 사용은 자유롭습니다
+
+상용프로젝트에서 사용하신다면 메일이라도 하나 남겨주시면 감사드리겠습니다
+
 메일주소는 mnpshino@gmail.com 입니다
 
 감사합니다
