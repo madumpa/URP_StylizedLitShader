@@ -11,7 +11,7 @@ Lit 셰이더에서 할 수 없었던 레디언스 제어, 스펙큘러 제어, 
 
 즉, PBR의 속성을 전부 사용하면서도 조금 더 만화같은 표현을 하기에 적합한 셰이더라고 할 수 있겠습니다
 
-![image](https://user-images.githubusercontent.com/35050187/100261210-c19b3280-2f8d-11eb-9b87-2c3fad0f5d54.png
+![image](https://user-images.githubusercontent.com/35050187/100261210-c19b3280-2f8d-11eb-9b87-2c3fad0f5d54.png)
 
 레디언스 제어가 가능하기 때문에 이처럼 NPR 느낌도 잘 소화합니다 
 
