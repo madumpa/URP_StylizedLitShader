@@ -83,8 +83,8 @@ https://github.com/madumpa/URP_StylizedLitShader.git#packageManagerWork
 ```
 을 붙여넣습니다.
 
-![Images~/git.png](Images~/git.png)  
-  
+![packageManagerWork/Images~/git.png](packageManagerWork/Images~/git.png)  
+
 4. 설치가 완료되면 Samples 탭을 열어 Demo Assets를 Import 합니다.  
   
 ![Images~/samples.png](Images~/samples.png)  
