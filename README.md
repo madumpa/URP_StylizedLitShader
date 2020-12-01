@@ -51,6 +51,7 @@ Stylized Lit 셰이더의 가장 큰 특징중에 또 한가지는 브러시 텍
 R채널은 Med Tone,
 G채널은 Shadow,
 B채널은 Reflect 에 대응합니다 
+
 샘플링을 아끼기 위해 타일링은 공통으로 쓸 수밖에 없으니 텍스처를 만들때 계획적으로 만들어 사용해 주세요
 
 ![image](https://user-images.githubusercontent.com/35050187/100261554-4423f200-2f8e-11eb-9364-0b35c4d1f1bf.png)
