@@ -1,0 +1,18 @@
+{
+    "name": "com.madumpa.universal.stylized-lit.editor",
+    "references": [
+        "GUID:c579267770062bf448e75eb160330b7f",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

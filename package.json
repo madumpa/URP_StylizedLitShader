@@ -1,0 +1,19 @@
+{
+  "name": "com.madumpa.universal.stylized-lit",
+  "displayName": "URP Stylized Lit",
+  "version": "1.0.0",
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "8.2.0"
+  },
+  "author": {
+  	"name": "Madumpa",
+  	"url": "https://github.com/madumpa/URP_StylizedLitShader"
+  },
+  "samples": [
+  	{
+  		"displayName": "Demo Assets",
+  		"description": "Madumpa's URP Stylized Lit Shader Repository",
+  		"path": "Samples~/Demo Assets"
+  	}
+  ]
+}
