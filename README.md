@@ -1,6 +1,8 @@
 # URP_StylizedLitShader
 URP Stylized Lit Shader Repository
 
+이 저장소는 2020.1.13f1으로 작업되었습니다 
+
 안녕하세요 프리랜서 테크니컬 아티스트 마둠파입니다. 
 
 ![image](https://user-images.githubusercontent.com/35050187/100261095-9adcfc00-2f8d-11eb-8d21-866438c88b71.png)
