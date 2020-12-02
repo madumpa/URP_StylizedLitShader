@@ -1,6 +1,7 @@
 # URP_StylizedLitShader
 URP Stylized Lit Shader Repository
 
+<<<<<<< HEAD
 이 저장소는 2020.1.13f1으로 작업되었습니다 
 
 안녕하세요 프리랜서 테크니컬 아티스트 마둠파입니다. 
@@ -74,6 +75,9 @@ B채널은 Reflect 에 대응합니다
 추가 -
 
 패키지 매니저를 통한 다운로드 방법
+=======
+[원본 전체 프로젝트](https://github.com/madumpa/URP_StylizedLitShader.git#main)
+>>>>>>> parent of efe4286... Merge branch 'packageManagerWork' into package-manager
 
 1. URP 세팅이 된 프로젝트를 열어주세요.
 없는 경우 빈 URP 템플릿의 프로젝트를 생성해도 됩니다.
@@ -87,6 +91,7 @@ https://github.com/madumpa/URP_StylizedLitShader.git#packageManagerWork
 ```
 을 붙여넣습니다.
 
+<<<<<<< HEAD
 ![Image](https://github.com/madumpa/URP_StylizedLitShader/raw/packageManagerWork/Images~/git.png)
 
 4. 설치가 완료되면 Samples 탭을 열어 Demo Assets를 Import 합니다.  
@@ -96,3 +101,14 @@ https://github.com/madumpa/URP_StylizedLitShader.git#packageManagerWork
 5. 프로젝트 뷰에 생긴 데모 에셋 폴더의 데모 씬을 엽니다.  
 
 ![Image](https://github.com/madumpa/URP_StylizedLitShader/raw/packageManagerWork/Images~/project.png)
+=======
+![Images~/git.png](Images~/git.png)  
+  
+4. 설치가 완료되면 Samples 탭을 열어 Demo Assets를 Import 합니다.  
+  
+![Images~/samples.png](Images~/samples.png)  
+  
+5. 프로젝트 뷰에 생긴 데모 에셋 폴더의 데모 씬을 엽니다.  
+
+![Images~/project.png](Images~/project.png)  
+>>>>>>> parent of efe4286... Merge branch 'packageManagerWork' into package-manager
