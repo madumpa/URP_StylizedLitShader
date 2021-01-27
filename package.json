@@ -1,7 +1,7 @@
 {
   "name": "com.madumpa.universal.stylized-lit",
   "displayName": "URP Stylized Lit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "dependencies": {
     "com.unity.render-pipelines.universal": "8.2.0"
   },
