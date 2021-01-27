@@ -24,6 +24,7 @@ float _SpecularThreshold, _SpecularSmooth, _SpecularIntensity ,_FresnelIntensity
 float _ReflProbeIntensity, _ReflProbeRotation, _MetalReflProbeIntensity;
 float _MedBrushStrength, _ShadowBrushStrength, _ReflBrushStrength;
 float _ReceiveShadows;
+float _GIIntensity;
 float4 _BrushTex_ST;
 CBUFFER_END
 

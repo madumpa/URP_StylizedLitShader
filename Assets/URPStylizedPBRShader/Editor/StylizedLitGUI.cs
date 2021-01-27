@@ -79,6 +79,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             public MaterialProperty shadowThreshold;
             public MaterialProperty shadowSmooth;
             public MaterialProperty shadowBrushStrength;
+
+            public MaterialProperty giIntensity;
             public MaterialProperty reflColor;
             public MaterialProperty reflThreshold;
             public MaterialProperty reflSmooth;
@@ -134,6 +136,7 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
                 reflThreshold = BaseShaderGUI.FindProperty("_ReflectThreshold", properties, false);
                 reflSmooth = BaseShaderGUI.FindProperty("_ReflectSmooth", properties, false);
                 reflBrushStrength = BaseShaderGUI.FindProperty("_ReflBrushStrength", properties, false);
+                giIntensity = BaseShaderGUI.FindProperty("_GIIntensity", properties, false);
                 specularLightOffset = BaseShaderGUI.FindProperty("_SpecularLightOffset", properties, false);
                 specularThreshold = BaseShaderGUI.FindProperty("_SpecularThreshold", properties, false);
                 specularSmooth = BaseShaderGUI.FindProperty("_SpecularSmooth", properties, false);

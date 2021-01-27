@@ -41,6 +41,8 @@ Shader "Universal Render Pipeline/Stylized Lit"
         _ReflectColor ("Reflect Color", Color) = (0,0,0,0)
         _ReflectThreshold ("Reflect Threshold", Range(0,1)) = 0
         _ReflectSmooth ("Reflect Smooth", Range(0,0.5)) = 0.25
+
+        _GIIntensity("GI Intensity", Range(0,2)) = 1
         
         //[Header(StylizedReflection)]
         _SpecularLightOffset("Specular Light Offset", Vector) = (0,0,0,0)
@@ -356,7 +358,7 @@ Shader "Universal Render Pipeline/Stylized Lit"
 
             half3 EnvironmentBRDFCustom(BRDFData brdfData, half3 radiance, half3 indirectDiffuse, half3 indirectSpecular, half fresnelTerm)  
             {
-                half3 c = indirectDiffuse * brdfData.diffuse;
+                half3 c = indirectDiffuse * brdfData.diffuse * _GIIntensity;
                 float surfaceReduction = 1.0 / (brdfData.roughness2 + 1.0);
                 c += surfaceReduction * indirectSpecular * lerp(brdfData.specular * radiance, brdfData.grazingTerm, fresnelTerm);   
                 return c;
@@ -390,8 +392,8 @@ Shader "Universal Render Pipeline/Stylized Lit"
                 #endif
                 half smoothMedTone = LinearStep( _MedThreshold - _MedSmooth, _MedThreshold + _MedSmooth, halfLambertMed);
                 half3 MedToneColor = lerp(_MedColor.rgb , 1 , smoothMedTone);
-                half smoothShadow = LinearStep ( _ShadowThreshold - _ShadowSmooth, _ShadowThreshold + _ShadowSmooth, halfLambertShadow);
-                half3 ShadowColor = lerp(_ShadowColor.rgb, MedToneColor, smoothShadow * (lerp(1,light.distanceAttenuation * light.shadowAttenuation,_ReceiveShadows) ));   //그림자를 합쳐주는 부분이 포인트!
+                half smoothShadow = LinearStep ( _ShadowThreshold - _ShadowSmooth, _ShadowThreshold + _ShadowSmooth, halfLambertShadow * (lerp(1,light.distanceAttenuation * light.shadowAttenuation,_ReceiveShadows) ));
+                half3 ShadowColor = lerp(_ShadowColor.rgb, MedToneColor, smoothShadow );   //그림자를 합쳐주는 부분이 포인트!
                 half smoothReflect = LinearStep( _ReflectThreshold - _ReflectSmooth, _ReflectThreshold + _ReflectSmooth, halfLambertRefl);
                 half3 ReflectColor = lerp(_ReflectColor.rgb , ShadowColor , smoothReflect);
                 half3 radiance = light.color * ReflectColor;//lightColor * (lightAttenuation * NdotL);
