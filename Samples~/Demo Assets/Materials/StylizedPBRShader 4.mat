@@ -80,6 +80,7 @@ Material:
     - _FresnelIntensity: 1
     - _FresnelSmooth: 0.478
     - _FresnelThreshold: 0.466
+    - _GIIntensity: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0

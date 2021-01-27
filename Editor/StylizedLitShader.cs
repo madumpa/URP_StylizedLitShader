@@ -56,6 +56,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             public static readonly GUIContent reflBrushStrengthGUI = new GUIContent("Reflect Brush Strength",
                 "These settings describe the look and feel of the surface itself.");
 
+            public static readonly GUIContent giIntensityGUI = new GUIContent("GI (indirect Diffuse) Intensity",
+                "These settings describe the look and feel of the surface itself.");
+
             public static readonly GUIContent specularLightOffsetGUI = new GUIContent("Specular Light Offset",
                 "These settings describe the look and feel of the surface itself.");
 
@@ -167,6 +170,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
                 materialEditor.ShaderProperty(litProperties.reflColor, StStyles.reflColorGUI, 1);
                 materialEditor.ShaderProperty(litProperties.reflThreshold, StStyles.reflThresholdGUI, 1);
                 materialEditor.ShaderProperty(litProperties.reflSmooth, StStyles.reflSmoothGUI, 1);
+
+                EditorGUILayout.Space();
+                materialEditor.ShaderProperty(litProperties.giIntensity, StStyles.giIntensityGUI, 1);
 
                 EditorGUILayout.Space();
                 EditorGUILayout.HelpBox("Stylized Reflection", MessageType.None);

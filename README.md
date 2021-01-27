@@ -1,8 +1,9 @@
 # URP_StylizedLitShader
 URP Stylized Lit Shader Repository
 
+이 저장소는 2020.1.13f1으로 작업되었습니다. 
 
-이 저장소는 2020.1.13f1으로 작업되었습니다 
+URP 패키지는 7.4 버전 이상을 사용해 주세요 
 
 안녕하세요 프리랜서 테크니컬 아티스트 마둠파입니다. 
 
@@ -70,14 +71,24 @@ B채널은 Reflect 에 대응합니다
 
 감사합니다
 
- 
+---------------------------------------------------
+Version 1.1
+
+![image](https://user-images.githubusercontent.com/35050187/105962483-39d3c080-60c3-11eb-9ebe-11c612051d4b.png)
+
+1.1버전에서는 실시간그림자를 Shadow Color 계산에 포함하는 것으로 수정하였습니다
+
+실시간 그림자와 암부 계산을 한번에 하여 Shadow Smooth로 실시간 그림자 경계까지 한번에 컨트롤 하는것이 가능해졌습니다 
+
+
+또한 GI(Indirect Diffuse)의 밝기를 컨트롤 할 수 있는 GI Intensity 기능이 추가 되었습니다 
+
+
+----------------------------------------------------
   
 추가 -
 
-패키지 매니저를 통한 다운로드 방법
-=======
-[원본 전체 프로젝트](https://github.com/madumpa/URP_StylizedLitShader.git#main)
->>>>>>> parent of efe4286... Merge branch 'packageManagerWork' into package-manager
+패키지 매니저를 통한 다운로드 방법 (컴퓨터에 Git이 설치되어 있어야 합니다) 
 
 1. URP 세팅이 된 프로젝트를 열어주세요.
 없는 경우 빈 URP 템플릿의 프로젝트를 생성해도 됩니다.
