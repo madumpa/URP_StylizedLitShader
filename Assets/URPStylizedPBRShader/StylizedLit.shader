@@ -336,7 +336,7 @@ Shader "Universal Render Pipeline/Stylized Lit"
                 specularTerm = clamp(specularTerm, 0.0, 100.0); // Prevent FP16 overflow on mobiles
             #endif
 
-                half3 color = LinearStep( _SpecularThreshold - _SpecularSmooth, _SpecularThreshold + _SpecularSmooth, specularTerm * brdfData.specular.x * max(0,_SpecularIntensity)) + brdfData.diffuse;
+                half3 color = LinearStep( _SpecularThreshold - _SpecularSmooth, _SpecularThreshold + _SpecularSmooth, specularTerm ) * brdfData.specular * max(0,_SpecularIntensity) + brdfData.diffuse;
                 return color;
             #else
                 return brdfData.diffuse;
