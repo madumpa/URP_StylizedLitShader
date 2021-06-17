@@ -1,4 +1,4 @@
-﻿//Madumpa URP Stylized Lit Shader Ver 1.0
+﻿//Madumpa URP Stylized Lit Shader Ver 1.2
 //E-mail : mnpshino@gmail.com
 //GitHub : https://github.com/madumpa/URP_StylizedLitShader
 //WebSite : https://madumpa.com/
@@ -45,11 +45,14 @@ Shader "Universal Render Pipeline/Stylized Lit"
         _GIIntensity("GI Intensity", Range(0,2)) = 1
         
         //[Header(StylizedReflection)]
+        [Toggle] _GGXSpecular ("GGX Specular", float) = 0
         _SpecularLightOffset("Specular Light Offset", Vector) = (0,0,0,0)
         _SpecularThreshold("Specular Threshold", Range(0.1,2)) = 0.5
         _SpecularSmooth ("Specular Smooth", Range(0,0.5)) = 0.5
         _SpecularIntensity("Specular Intensity", float) = 1
+        
         [Space(10)]
+        [Toggle] _DirectionalFresnel ("Directional Fresnel", float) = 0
         _FresnelThreshold("Fresnel Threshold", Range(0,1)) = 0.5
         _FresnelSmooth("Fresnel Smooth", Range(0,0.5) ) = 0.5
         _FresnelIntensity("Fresnel Intensity", float) = 1
@@ -157,6 +160,8 @@ Shader "Universal Render Pipeline/Stylized Lit"
             // Unity defined keywords
             #pragma multi_compile _ DIRLIGHTMAP_COMBINED
             #pragma multi_compile _ LIGHTMAP_ON
+            #pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
+            #pragma multi_compile _ SHADOWS_SHADOWMASK
             #pragma multi_compile_fog
 
             //--------------------------------------
@@ -247,6 +252,8 @@ Shader "Universal Render Pipeline/Stylized Lit"
                 inputData.fogCoord = input.fogFactorAndVertexLight.x;
                 inputData.vertexLighting = input.fogFactorAndVertexLight.yzw;
                 inputData.bakedGI = SAMPLE_GI(input.lightmapUV, input.vertexSH, inputData.normalWS);
+                inputData.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(input.positionCS);
+                inputData.shadowMask = SAMPLE_SHADOWMASK(input.lightmapUV);
             }
 
             ///////////////////////////////////////////////////////////////////////////////
@@ -336,7 +343,7 @@ Shader "Universal Render Pipeline/Stylized Lit"
                 specularTerm = clamp(specularTerm, 0.0, 100.0); // Prevent FP16 overflow on mobiles
             #endif
 
-                half3 color = LinearStep( _SpecularThreshold - _SpecularSmooth, _SpecularThreshold + _SpecularSmooth, specularTerm ) * brdfData.specular * max(0,_SpecularIntensity) + brdfData.diffuse;
+                half3 color = lerp(LinearStep( _SpecularThreshold - _SpecularSmooth, _SpecularThreshold + _SpecularSmooth, specularTerm ), specularTerm, _GGXSpecular) * brdfData.specular * max(0,_SpecularIntensity) + brdfData.diffuse;
                 return color;
             #else
                 return brdfData.diffuse;
@@ -365,10 +372,10 @@ Shader "Universal Render Pipeline/Stylized Lit"
             }
 
 
-            half3 StylizedGlobalIllumination(BRDFData brdfData, half3 radiance, half3 bakedGI, half occlusion, half3 normalWS, half3 viewDirectionWS, half metallic)
+            half3 StylizedGlobalIllumination(BRDFData brdfData, half3 radiance, half3 bakedGI, half occlusion, half3 normalWS, half3 viewDirectionWS, half metallic, half ndotl)
             {
                 half3 reflectVector = reflect(-viewDirectionWS, normalWS);
-                half fresnelTerm = LinearStep( _FresnelThreshold - _FresnelSmooth, _FresnelThreshold += _FresnelSmooth, 1.0 - saturate(dot(normalWS, viewDirectionWS))) * max(0,_FresnelIntensity);
+                half fresnelTerm = LinearStep( _FresnelThreshold - _FresnelSmooth, _FresnelThreshold += _FresnelSmooth, 1.0 - saturate(dot(normalWS, viewDirectionWS))) * max(0,_FresnelIntensity) * ndotl;
 
                 half3 indirectDiffuse = bakedGI * occlusion;
                 half3 indirectSpecular = GlossyEnvironmentReflection(reflectVector, brdfData.perceptualRoughness, occlusion) * lerp(max(0,_ReflProbeIntensity), max(0,_MetalReflProbeIntensity), metallic) ;
@@ -418,7 +425,9 @@ Shader "Universal Render Pipeline/Stylized Lit"
 
                 MixRealtimeAndBakedGI(mainLight, inputData.normalWS, inputData.bakedGI, half4(0, 0, 0, 0));
 
-                half3 color = StylizedGlobalIllumination(brdfData, radiance, inputData.bakedGI, occlusion, inputData.normalWS, inputData.viewDirectionWS, metallic);
+                float ndotl = LinearStep( _ShadowThreshold - _ShadowSmooth, _ShadowThreshold + _ShadowSmooth, dot(mainLight.direction, inputData.normalWS) * 0.5 + 0.5 );
+
+                half3 color = StylizedGlobalIllumination(brdfData, radiance, inputData.bakedGI, occlusion, inputData.normalWS, inputData.viewDirectionWS, metallic, lerp(1,ndotl, _DirectionalFresnel)  );
                 color += LightingStylizedPhysicallyBased(brdfData, radiance, mainLight, inputData.normalWS, inputData.viewDirectionWS);
 
             #ifdef _ADDITIONAL_LIGHTS
@@ -524,6 +533,36 @@ Shader "Universal Render Pipeline/Stylized Lit"
 
             #include "StylizedLitInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
+            ENDHLSL
+        }
+
+        Pass
+        {
+            Name "DepthNormals"
+            Tags{"LightMode" = "DepthNormals"}
+
+            ZWrite On
+            Cull[_Cull]
+
+            HLSLPROGRAM
+            #pragma only_renderers gles gles3 glcore d3d11
+            #pragma target 2.0
+
+            #pragma vertex DepthNormalsVertex
+            #pragma fragment DepthNormalsFragment
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature _NORMALMAP
+            #pragma shader_feature _ALPHATEST_ON
+            #pragma shader_feature _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+
+            #include "StylizedLitInput.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
             ENDHLSL
         }
 

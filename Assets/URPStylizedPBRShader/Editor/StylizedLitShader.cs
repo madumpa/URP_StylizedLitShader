@@ -59,6 +59,9 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             public static readonly GUIContent giIntensityGUI = new GUIContent("GI (indirect Diffuse) Intensity",
                 "These settings describe the look and feel of the surface itself.");
 
+            public static readonly GUIContent ggxSpecularGUI = new GUIContent("GGX Specular",
+                "These settings describe the look and feel of the surface itself.");
+
             public static readonly GUIContent specularLightOffsetGUI = new GUIContent("Specular Light Offset",
                 "These settings describe the look and feel of the surface itself.");
 
@@ -69,6 +72,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
                 "These settings describe the look and feel of the surface itself.");
 
             public static readonly GUIContent specularIntensityGUI = new GUIContent("Specular Intensity",
+                "These settings describe the look and feel of the surface itself.");
+            public static readonly GUIContent directionalFresnelGUI = new GUIContent("Directional Fresnel",
                 "These settings describe the look and feel of the surface itself.");
 
             public static readonly GUIContent fresnelThresholdGUI = new GUIContent("Fresnel Threshold",
@@ -177,11 +182,16 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
                 EditorGUILayout.Space();
                 EditorGUILayout.HelpBox("Stylized Reflection", MessageType.None);
 
+                materialEditor.ShaderProperty(litProperties.ggxSpecular, StStyles.ggxSpecularGUI, 1);
                 materialEditor.ShaderProperty(litProperties.specularLightOffset, StStyles.specularLightOffsetGUI, 1);
-                materialEditor.ShaderProperty(litProperties.specularThreshold, StStyles.specularThresholdGUI, 1);
-                materialEditor.ShaderProperty(litProperties.specularSmooth, StStyles.specularSmoothGUI, 1);
+                if (material.GetFloat("_GGXSpecular") == 0)
+                {
+                    materialEditor.ShaderProperty(litProperties.specularThreshold, StStyles.specularThresholdGUI, 1);
+                    materialEditor.ShaderProperty(litProperties.specularSmooth, StStyles.specularSmoothGUI, 1);
+                }
                 materialEditor.ShaderProperty(litProperties.specularIntensity, StStyles.specularIntensityGUI, 1);
 
+                materialEditor.ShaderProperty(litProperties.directionalFresnel, StStyles.directionalFresnelGUI, 1);
                 materialEditor.ShaderProperty(litProperties.fresnelThreshold, StStyles.fresnelThresholdGUI, 1);
                 materialEditor.ShaderProperty(litProperties.fresnelSmooth, StStyles.fresnelSmoothGUI, 1);
                 materialEditor.ShaderProperty(litProperties.fresnelIntensity, StStyles.fresnelIntensityGUI, 1);
