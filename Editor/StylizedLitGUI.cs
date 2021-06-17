@@ -85,10 +85,12 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             public MaterialProperty reflThreshold;
             public MaterialProperty reflSmooth;
             public MaterialProperty reflBrushStrength;
+            public MaterialProperty ggxSpecular;
             public MaterialProperty specularLightOffset;
             public MaterialProperty specularThreshold;
             public MaterialProperty specularSmooth;
             public MaterialProperty specularIntensity;
+            public MaterialProperty directionalFresnel;
             public MaterialProperty fresnelThreshold;
             public MaterialProperty fresnelSmooth;
             public MaterialProperty fresnelIntensity;
@@ -137,10 +139,12 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
                 reflSmooth = BaseShaderGUI.FindProperty("_ReflectSmooth", properties, false);
                 reflBrushStrength = BaseShaderGUI.FindProperty("_ReflBrushStrength", properties, false);
                 giIntensity = BaseShaderGUI.FindProperty("_GIIntensity", properties, false);
+                ggxSpecular = BaseShaderGUI.FindProperty("_GGXSpecular", properties, false);
                 specularLightOffset = BaseShaderGUI.FindProperty("_SpecularLightOffset", properties, false);
                 specularThreshold = BaseShaderGUI.FindProperty("_SpecularThreshold", properties, false);
                 specularSmooth = BaseShaderGUI.FindProperty("_SpecularSmooth", properties, false);
                 specularIntensity = BaseShaderGUI.FindProperty("_SpecularIntensity", properties, false);
+                directionalFresnel = BaseShaderGUI.FindProperty("_DirectionalFresnel", properties, false);
                 fresnelThreshold = BaseShaderGUI.FindProperty("_FresnelThreshold", properties, false);
                 fresnelSmooth  = BaseShaderGUI.FindProperty("_FresnelSmooth", properties, false);
                 fresnelIntensity = BaseShaderGUI.FindProperty("_FresnelIntensity", properties, false);
