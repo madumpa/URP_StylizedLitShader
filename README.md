@@ -1,9 +1,9 @@
 # URP_StylizedLitShader
 URP Stylized Lit Shader Repository
 
-이 저장소는 2020.1.13f1으로 작업되었습니다. 
+이 저장소는 2020.3.7f1으로 작업되었습니다. 
 
-URP 패키지는 7.4 버전 이상을 사용해 주세요 
+URP 패키지는 10.4 버전 이상을 사용해 주세요 
 
 안녕하세요 프리랜서 테크니컬 아티스트 마둠파입니다. 
 
