@@ -580,7 +580,7 @@ Shader "Universal Render Pipeline/Stylized Lit"
             #pragma exclude_renderers d3d11_9x
 
             #pragma vertex UniversalVertexMeta
-            #pragma fragment UniversalFragmentMeta
+            #pragma fragment UniversalFragmentMetaLit
 
             #pragma shader_feature _SPECULAR_SETUP
             #pragma shader_feature _EMISSION
