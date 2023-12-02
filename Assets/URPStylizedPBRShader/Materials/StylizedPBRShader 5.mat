@@ -15,14 +15,19 @@ MonoBehaviour:
   version: 2
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StylizedPBRShader 5
   m_Shader: {fileID: 4800000, guid: 120f3700f0523454ba3559f6088085ae, type: 3}
-  m_ShaderKeywords: _RECEIVE_SHADOWS_OFF _USEBRUSHTEX_ON
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _RECEIVE_SHADOWS_OFF
+  - _USEBRUSHTEX_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -30,6 +35,7 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -65,17 +71,21 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DirectionalFresnel: 0
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _FresnelIntensity: 1
     - _FresnelSmooth: 0.25
     - _FresnelThreshold: 0.5
+    - _GGXSpecular: 0
+    - _GIIntensity: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
