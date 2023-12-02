@@ -463,7 +463,7 @@ Shader "Universal Render Pipeline/Stylized Lit"
                 half4 color = UniversalFragmentStylizedPBR(inputData, surfaceData.albedo, surfaceData.metallic, surfaceData.specular, surfaceData.smoothness, surfaceData.occlusion, surfaceData.emission, surfaceData.alpha, input.uv);
                 
                 color.rgb = MixFog(color.rgb, inputData.fogCoord);
-                color.a = OutputAlpha(color.a);
+                color.a = OutputAlpha(color.a, true);
 
                 return color;
             }
@@ -580,7 +580,7 @@ Shader "Universal Render Pipeline/Stylized Lit"
             #pragma exclude_renderers d3d11_9x
 
             #pragma vertex UniversalVertexMeta
-            #pragma fragment UniversalFragmentMeta
+            #pragma fragment UniversalFragmentMetaLit
 
             #pragma shader_feature _SPECULAR_SETUP
             #pragma shader_feature _EMISSION
